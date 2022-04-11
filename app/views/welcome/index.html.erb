@@ -1,0 +1,41 @@
+<h4> Welcome <%= current_user.name %> </h4>
+
+<div class="container">
+    <%= image_tag current_user.image, size:"150x150" if current_user.image? %>
+    
+    <p>
+    <strong>Name:</strong>
+    <%= current_user.name %>
+    </p>
+
+    <p>
+    <strong>Email:</strong>
+    <%= current_user.email %>
+    </p>
+
+    <p>
+    <strong>Age:</strong>
+    <%= current_user.age %>
+    </p>
+
+    <p>
+    <strong>Gender:</strong>
+    <%= current_user.gender %>
+    </p>
+
+    <p>
+    <strong>Phone:</strong>
+    <%= current_user.phone %>
+    </p>
+
+    <p>
+    <strong>Address:</strong>
+    <%= current_user.address %>
+    </p>
+
+</div>
+
+<% if !current_user %>
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post %>
+    <%= image_tag image_path('facebook-login.jpg') %>
+<% end %>

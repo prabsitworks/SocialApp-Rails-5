@@ -1,0 +1,46 @@
+<div class="pcoded-main-container">
+<div class="form-group">
+  <h1>Users List</h1>
+                        
+  <table class="table table-striped table-bordered userdata" data-turbolinks="false" id="static-table">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Profile Pic</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Action</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><img src="<%= user.image %>" class= "post-show"></td>
+          <td><%= user.name %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.email %></td>
+          <td>
+          <%= link_to url_for(action: :disable, id: user.id), method: :disable, data: { confirm: "Are you sure you want to disable this user?" }, class: "btn btn-danger btn-sm", title: "Disable" do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      
+    </tbody>
+    
+  </table>
+</div>
+</div>
+<script>
+  $('.userdata').DataTable({
+    "order": [[0, "desc"]],
+    "columnDefs": [
+        { "targets": [0], "searchable": false }
+    ]
+  });
+</script>
