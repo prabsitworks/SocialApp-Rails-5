@@ -1,7 +1,7 @@
 <h4> Welcome <%= current_user.name %> </h4>
 
 <div class="container">
-    <%= image_tag current_user.image, size:"150x150" if current_user.image? %>
+    <img src="<%= current_user.image %>" class= "post-show">
     
     <p>
     <strong>Name:</strong>
