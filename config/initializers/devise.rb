@@ -310,6 +310,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # config/initializers/devise.rb
-
-config.omniauth :facebook, "657163762179515", "b75c1c20b12a9a179168d7e303ec9c5d", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  # Facebook keys for omniauth authentication
+  config.omniauth :facebook, "657163762179515", "b75c1c20b12a9a179168d7e303ec9c5d", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 end

@@ -1,8 +1,5 @@
 class WelcomeController < ApplicationController
-    
-    def index
-    end
-
-    
-
+  # Home page controller action
+  def index
+  end
 end

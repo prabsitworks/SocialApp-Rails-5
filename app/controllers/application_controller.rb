@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :is_admin
 
     private
-
+    # Check whether user is admin or not
     def is_admin
       @current_user_admin = User.where(id: current_user.id).first.admin if !current_user.nil?
     end

@@ -1,0 +1,12 @@
+Points to note down for any project :
+
+1) Design database thoroughly, what columns should be there, what relations between tables should be there.
+In user table, all the necessary columns should be created.
+we should be ready with DB model, create ERD for all the tables.
+
+2) Add scopes
+
+3) Validation in models
+like email, password etc
+
+4) 
