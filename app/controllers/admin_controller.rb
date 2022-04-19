@@ -13,4 +13,9 @@ class AdminController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # Fetch users from db based on page number
+  def fetch_users
+    
+  end
 end

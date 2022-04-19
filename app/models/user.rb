@@ -30,10 +30,25 @@ class User < ApplicationRecord
 	mount_uploader :image, ImageUploader
 	
 	# Scope for user if it is active or not
-	scope :disabled, -> {where(disableyn: 'N')}
+	scope :disabled, -> {where(disableyn: 'Y')}
 
 	## ENUM
-  enum role: [:participant, :admin]
+  enum role: {user: 0, admin: 1} 
+
+	## Associations
+  # has_one :admin, dependent: :destroy
+
+	# Validation on the fields
+	validates :name, :age, :gender, :address, :email, presence: true
+	
+	# Validates uniqueness of email
+	validates_uniqueness_of :email
+
+	# Validates format of email
+	validates_format_of :email,
+                      with: /\A[^@]+@[^@]+\z/,
+                      allow_blank: true,
+                      if: :email_changed?
 
 	# Used for new user session
 	def self.new_with_session(params, session)

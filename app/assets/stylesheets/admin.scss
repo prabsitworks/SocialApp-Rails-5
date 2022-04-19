@@ -2,6 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .facebook_bg_color {
-    background-color: #3b5998;
-  }
+  background-color: #3b5998;
+}
+
+table.data-list-view.dataTable tbody td.user-name, table.data-thumb-view.dataTable tbody td.product-name {
+  font-weight : 500;
+}
+
+.fa_active {
+  background: none;
+  color: #28c76e;
+}
+
+.fa_ended {
+  background: none;
+  color: #EA5455;
+}
+
+.fa_draft {
+  background: none;
+  color: #ff9f44;
+}
+
+.fa_scheduled {
+  background: none;
+  color: #28c76e;
+}
+
+.fa_circle_lg {
+  font-size: 14px;
+}
+
+.fa_circle_sm {
+  font-size: 10px;
+}
   
