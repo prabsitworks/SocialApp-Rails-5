@@ -27,7 +27,7 @@ class AdminController < ApplicationController
 
       search_columns.each do |column|
         terms.each do |term|
-          search_string << "#{column} ILIKE '%#{term}%'"
+          search_string << "#{column} LIKE '%#{term}%'"
         end
       end
       users = users.where(search_string.join(' OR '))
@@ -66,5 +66,9 @@ class AdminController < ApplicationController
   ## Returns Datatable Per Page Length Count
   def datatable_per_page
     params[:length].to_i > 0 ? params[:length].to_i : 10
+  end
+
+  def search_columns
+    %w(name email)
   end
 end
