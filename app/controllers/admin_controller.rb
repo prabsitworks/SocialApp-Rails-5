@@ -44,7 +44,7 @@ class AdminController < ApplicationController
       users: users.as_json,
         draw: params['draw'].to_i,
         recordsTotal: users.count,
-        recordsFiltered: users.count,
+        recordsFiltered: users.total_count,
     }
   end
 
