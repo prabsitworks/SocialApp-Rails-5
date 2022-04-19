@@ -21,5 +21,6 @@
 //= require jquery.dataTables.min
 //= require jquery.validate
 //= require dataTables/jquery.dataTables
+//= require sweetalert2.all.min
 //= require_tree .
 
