@@ -56,18 +56,12 @@ $(document).on('turbolinks:load', function () {
           var btn = '';
           if(actionText == "Disable")
           {  
-            btn += '<button class = "btn btn-success toggle-challenge-status">'+actionText+'</button>';
+            btn += '<button class = "btn btn-success">'+actionText+'</button>';
+            '<%= link_to btn, @admin, remote: true, method: :disable %>'
           }else{
-            btn += '<button class = "btn btn-danger toggle-challenge-status">'+actionText+'</button>';
+            btn += '<button class = "btn btn-danger">'+actionText+'</button>';
+            '<%= link_to btn, @admin, remote: true, method: :disable %>'
           }
-
-          //let action_html = "<div class='input-group' data-challenge-id ='" + data.id + "'>" +
-            //  "<span class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><i class='feather icon-more-horizontal'></i></span>" +
-              //"<div class='dropdown-menu more_action_bg' x-placement='bottom-end' style='position: absolute;z-index: 9999;'>"
-         // action_html = action_html + "<a class='dropdown-item toggle-challenge-status' href='javascript:void(0);'><i class='feather icon-check-square'></i> " + actionText + "</a>"
-
-          //action_html = action_html + "</div></div>"
-
           return btn;
         }
       },
