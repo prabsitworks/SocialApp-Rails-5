@@ -6,9 +6,10 @@ class AdminController < ApplicationController
 
   # Disable user from the admin 
   def disable
-    binding.pry
     @userid = User.where(id: params[:id]).first
-    @userid.update(disableyn: 'Y') 
+    # Used enum value as :No for disabling the user
+    @userid.update(is_active: :No) 
+    binding.pry
     respond_to do |format|
       format.html { redirect_to admin_path, notice: 'User is disabled' }
       format.json { head :no_content }
@@ -68,6 +69,7 @@ class AdminController < ApplicationController
     params[:length].to_i > 0 ? params[:length].to_i : 10
   end
 
+  # Search with mentioned column names
   def search_columns
     %w(name email)
   end
