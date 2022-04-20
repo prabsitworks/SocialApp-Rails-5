@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
         return JSON.stringify(json);
       },
     },
-    columns: [
+    columns: [ 
       {
         title: 'Image', data: null, searchable: false, sortable: false,
         render: function (data, type, row) {
