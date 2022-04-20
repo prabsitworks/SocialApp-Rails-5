@@ -53,15 +53,21 @@ $(document).on('turbolinks:load', function () {
         title: 'Actions', data: null, searchable: false, orderable: false,
         render: function (data, type, row) {
           actionText = data.disableyn ? ' Disable' : ' Enable'
-          var btn = '';
-          if(actionText == "Disable")
-          {  
-            btn += '<button class = "btn btn-success toggle-challenge-status">'+actionText+'</button>';
-          }else{
-            btn += '<button class = "btn btn-danger toggle-challenge-status">'+actionText+'</button>';
-          }
-          return btn;
+          let action_html = "<div class='input-group' data-user-id ='" + data.id + "'>" +
+                "<span class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><i class='feather icon-more-horizontal'></i></span>" +
+                "<div class='dropdown-menu more_action_bg' x-placement='bottom-end' style='position: absolute;z-index: 9999;'>"
+              action_html = action_html + "<a class='dropdown-item toggle-challenge-status' href='javascript:void(0);'><i class='feather icon-check-square'></i> " + actionText + "</a>"
+              action_html = action_html + "</div></div>"
+              var btn = '';
+          //if(actionText == "Disable")
+          //{  
+           // btn += '<button class = "btn btn-success toggle-challenge-status">'+actionText+'</button>';
+         // }else{
+           // btn += '<button class = "btn btn-danger toggle-challenge-status">'+actionText+'</button>';
+         // }
+          return action_html;
         }
+        
       },
     ],
     dom: '<"top"<"actions action-btns"B><"action-filters"lf>><"clear">rt<"bottom"<"actions">p>',
@@ -92,8 +98,8 @@ $(document).on('turbolinks:load', function () {
 // Disable user function
 $('#static-table').on('click', '.toggle-challenge-status', function () 
 {
-  var userId = $('.user-name').data('id');
-  
+  var userId = $(this).data('id');
+  //$(this).parent().parent().data('campaign-id');
   console.log("userId = ",userId)
   if ($(this).html().includes('Enable')) {
     swalTitle = 'Enable'
@@ -121,6 +127,7 @@ $('#static-table').on('click', '.toggle-challenge-status', function ()
       $.ajax({
         type: 'GET',
         url: "/disable",
+        data: userId,
         success: function (data) {
           $('.loader').fadeOut();
           swalNotify(data.title, data.message);

@@ -53,15 +53,19 @@ $(document).on('turbolinks:load', function () {
         title: 'Actions', data: null, searchable: false, orderable: false,
         render: function (data, type, row) {
           actionText = data.disableyn ? ' Disable' : ' Enable'
-          var btn = '';
-          if(actionText == "Disable")
-          {  
-            btn += '<button class = "btn btn-success toggle-challenge-status">'+actionText+'</button>';
-          }else{
-            btn += '<button class = "btn btn-danger toggle-challenge-status">'+actionText+'</button>';
-          }
-          return btn;
+          let action_html = "<div class='input-group' data-user-id ='" + data.id + "'>" +
+                "<span class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><i class='feather icon-more-horizontal'></i></span>" +
+                "<div class='dropdown-menu more_action_bg' x-placement='bottom-end' style='position: absolute;z-index: 9999;'>"
+
+              action_html = action_html + "<a class='dropdown-item' href = 'disable/"  + data.id +
+                "'data-toggle='tooltip' data-placement='top' data-original-title='Disable'>" +
+                "<i class='feather icon-edit-2'></i> Disable</a>"
+  
+              action_html = action_html + "</div></div>"
+              var btn = '';
+            return action_html;
         }
+        
       },
     ],
     dom: '<"top"<"actions action-btns"B><"action-filters"lf>><"clear">rt<"bottom"<"actions">p>',
@@ -84,7 +88,6 @@ $(document).on('turbolinks:load', function () {
     ],
     initComplete: function (settings, json) {
       $(".dt-buttons .btn").removeClass("btn-secondary");
-      // $('.dataTables_filter').addClass('search-icon-placement');
     }
   });
 
