@@ -56,11 +56,9 @@ $(document).on('turbolinks:load', function () {
           var btn = '';
           if(actionText == "Disable")
           {  
-            btn += '<button class = "btn btn-success">'+actionText+'</button>';
-            '<%= link_to btn, @admin, remote: true, method: :disable %>'
+            btn += '<button class = "btn btn-success toggle-challenge-status">'+actionText+'</button>';
           }else{
-            btn += '<button class = "btn btn-danger">'+actionText+'</button>';
-            '<%= link_to btn, @admin, remote: true, method: :disable %>'
+            btn += '<button class = "btn btn-danger toggle-challenge-status">'+actionText+'</button>';
           }
           return btn;
         }
@@ -92,8 +90,8 @@ $(document).on('turbolinks:load', function () {
 
 
 // Disable user function
-$('#static-table').on('click', '.toggle-challenge-status', function () {
-
+$('#static-table').on('click', '.toggle-challenge-status', function () 
+{
   var userId = $('.user-name').data('id');
   
   console.log("userId = ",userId)
@@ -133,5 +131,5 @@ $('#static-table').on('click', '.toggle-challenge-status', function () {
       });
     }
   });
-});
+  });
 });
