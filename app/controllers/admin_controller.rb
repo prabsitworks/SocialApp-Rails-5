@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   # Home page for admin user with all the users
   def index
-    @users = User.all
+    @users = User.disabled
   end
 
   # Disable user from the admin 
