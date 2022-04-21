@@ -90,49 +90,4 @@ $(document).on('turbolinks:load', function () {
       $(".dt-buttons .btn").removeClass("btn-secondary");
     }
   });
-
-
-// Disable user function
-$('#static-table').on('click', '.toggle-challenge-status', function () 
-{
-  var userId = $('.user-name').data('id');
-  
-  console.log("userId = ",userId)
-  if ($(this).html().includes('Enable')) {
-    swalTitle = 'Enable'
-    swalText = 'You want to Enable this User?'
-  } else {
-    swalTitle = 'Disable'
-    swalText = 'You want to disable this User?'
-  }
-
-  Swal.fire({
-    title: 'Are you sure?',
-    text: swalText,
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, ' + swalTitle + ' it!',
-    confirmButtonClass: 'btn btn-primary',
-    cancelButtonClass: 'btn btn-danger ml-1',
-    buttonsStyling: false,
-  }).then(function (result) {
-    if (result.value) {
-      $('.loader').fadeIn();
-      console.log();
-      $.ajax({
-        type: 'GET',
-        url: "/disable",
-        success: function (data) {
-          $('.loader').fadeOut();
-          swalNotify(data.title, data.message);
-          if (data.success) {
-            $('#static-table').DataTable().ajax.reload(null, false);
-          }
-        }
-      });
-    }
-  });
-  });
 });
